@@ -1,11 +1,20 @@
 //Obstacle.h
 
+#include <iostream>
+using std::array;
+#include <cmath>
+using std::remainder;
+using std::abs;
+
 
 class Obstacle
 {    
 public:
     Obstacle(double x1, double y1, double x2, double y2);
     //~Obstacle();
+
+    array<double,2> get_edgeMin() const;
+
 private:
     double x1_;
     double y1_;

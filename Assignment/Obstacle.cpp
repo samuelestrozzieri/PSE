@@ -2,11 +2,6 @@
 
 #include "Obstacle.h"
 
-#include <cmath>
-using std::remainder;
-using std::abs;
-#include <iostream>
-
 
 /* Obstacle::~Obstacle()
 {
@@ -19,4 +14,9 @@ Obstacle::Obstacle(double x1, double y1, double x2, double y2)
         std::cerr << "Obstacle::Obstacle(double x1,...): invalid obstacle position(s) inserted\n";
         exit(EXIT_FAILURE);
     }
+}
+
+std::array<double, 2> Obstacle::get_edgeMin() const
+{
+    return array<double, 2>();
 }
