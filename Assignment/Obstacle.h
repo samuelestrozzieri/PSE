@@ -18,6 +18,7 @@ public:
     //~Obstacle();
 
     array<double,2> get_edgeMin() const;
+    array<double,2> get_edgeMax() const;
 
 private:
     double x1_;
