@@ -1,6 +1,10 @@
 //Obstacle.h
+#ifndef Obstacle_h
+#define Obstacle_h
+
 
 #include <iostream>
+#include <array>
 using std::array;
 #include <cmath>
 using std::remainder;
@@ -22,4 +26,4 @@ private:
     double y2_;
 };
 
-
+#endif
