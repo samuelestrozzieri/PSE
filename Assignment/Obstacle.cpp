@@ -2,6 +2,7 @@
 
 #include "Obstacle.h"
 
+#include <array>
 
 /* Obstacle::~Obstacle()
 {
