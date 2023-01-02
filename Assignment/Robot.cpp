@@ -1,3 +1,5 @@
+//Robot.cpp
+
 #include "Robot.h"
 
 
@@ -24,6 +26,12 @@ double Robot::get_xpos() const
 double Robot::get_ypos() const
 {
     return y_;
+}
+
+std::array<double,2> Robot::get_pos() const
+{
+    std::array<double,2> pos {x_,y_};
+    return pos;
 }
 
 double Robot::get_robozone() const

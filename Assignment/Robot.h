@@ -3,6 +3,8 @@
 
 #include <ostream>
 #include <cmath>
+#include <array>
+using std::array;
 //#include <cctype> //isdigit(a);
 
 #include "Grid.h"
@@ -19,6 +21,7 @@ public:
     double get_dimentions() const;
     double get_xpos() const;
     double get_ypos() const;
+    array<double,2> get_pos() const;
     double get_robozone() const;
 
     //Non-const member func.

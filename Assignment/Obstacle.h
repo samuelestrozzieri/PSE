@@ -14,9 +14,9 @@ using std::abs;
 class Obstacle
 {    
 public:
+    Obstacle();
     Obstacle(double x1, double y1, double x2, double y2);
-    //~Obstacle();
-
+    
     array<double,2> get_edgeMin() const;
     array<double,2> get_edgeMax() const;
 
