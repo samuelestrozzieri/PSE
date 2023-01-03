@@ -110,6 +110,45 @@ std::pair<Obstacle,double> nearest_obs(array<double,2> Robot, vector<Obstacle> v
     return p;
 }
 
+double U_att(double zeta, array<double,2> robot, array<double,2> goal)
+{
+    double U {0.5*zeta*(std::sqrt(eudis(robot,goal)))};
+    return U;
+}
+
+double U_rep(double eta, array<double,2> robot, double robozone, vector<Obstacle>& vecObs)
+{
+    double D_q {nearest_obs(robot,vecObs).second};
+    double U {0.0};
+    if (D_q <= robozone)
+    {
+        U = 0.5*eta*(std::sqrt((1/D_q)-(1/robozone)));
+    }
+    return U;
+}
+
+array<double,3> moving(Robot robot, array<double,2> goal, double eta, double zeta, double cell, double robozone, vector<Obstacle>& vecObs)
+{
+    double U = U_att(zeta, robot.get_pos(), goal) + U_rep(eta, robot.get_pos(), robozone*cell, vecObs);
+    array<double,3> moveTo {robot.get_xpos(),robot.get_ypos(),U};
+    for (double Xpos = (robot.get_xpos() - cell); Xpos <= (robot.get_xpos() + cell); Xpos += cell)
+    {
+        for (double Ypos = (robot.get_ypos() - cell); Ypos <= (robot.get_ypos() + cell); Ypos += cell)
+        {
+            if ((Xpos == robot.get_xpos())&&(Ypos == robot.get_ypos())) continue;
+            U = U_att(zeta, {Xpos,Ypos}, goal) + U_rep(eta, {Xpos,Ypos}, robozone*cell, vecObs);
+            if (U <= moveTo[2]){
+                moveTo[0] = Xpos;
+                moveTo[1] = Ypos;
+                moveTo[2] = U;
+            } 
+        }
+    }
+    // robot.set_xpos(moveTo[0]);
+    // robot.set_ypos(moveTo[1]);
+    robot.whereis(false);
+    return moveTo;
+}
 
 int main(){
 
