@@ -28,7 +28,9 @@ public:
     // void set_dimentions(double dim);
     void set_xpos(double xpos);
     void set_ypos(double ypos);
+    void set_pos(std::array<double,2>);
 
+    array<double,2> whereis(int a);
 private:
     double radius_; //Robot's dimension
     double x_; //X axes robot's position

@@ -39,6 +39,21 @@ double Robot::get_robozone() const
     return robozone_;
 }
 
+std::array<double,2> Robot::whereis(int a)
+{
+    switch (a)
+    {
+    case 1:
+        std::cout << "Robot is in position: (" << x_ <<" , " << y_ << ")\n";
+        return get_pos();
+        break;
+    default:
+        std::cout << "Robot is in position: (" << x_ <<" , " << y_ << ")\n";
+        return {};
+        break;
+    }
+}
+
 /* void Robot::set_dimentions(double dim) 
 {
     radius_ = dim;
@@ -54,6 +69,11 @@ void Robot::set_ypos(double ypos)
     y_ = ypos;
 }
 
+void Robot::set_pos(std::array<double,2> p)
+{
+    x_ = p[0];
+    y_ = p[1];
+}
 // Robot::~Robot()
 // {
 // }
